@@ -1,17 +1,16 @@
-- name: Percy
-  uses: percy/exec-action@v0.3.0
-  with:
-    # Your test suites CLI command
-    command: # default is 
-    # Run your own shell command
-    custom-command: # optional, default is 
-    # Flags to pass to the `percy exec` command
-    exec-flags: # optional, default is 
-    # The directory for the commands to execute in
-    working-directory: # optional, default is ./
-    # Set Percy env vars, but do not execute commands
-    passthrough: # optional
-    # Silence logging
-    silence: # optional
-    # Enable verbose logging
-    verbose: # optional
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Install
+        run: yarn
+      - name: Percy Test
+        uses: percy/exec-action@v0.1.1
+        with:
+          command: "cypress run"
+        env:
+          PERCY_TOKEN: a563b7b7da58c3dc58e124e81cf5e8ac484db9ef4397d004053bbc6d776f2a40
