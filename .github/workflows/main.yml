@@ -8,8 +8,6 @@ jobs:
         uses: actions/checkout@master
       - name: Install
         run: yarn
-      - name: Start
-        run: "yarn presnapshots"
       - name: Percy Test
         uses: percy/exec-action@v0.1.1
         with:
