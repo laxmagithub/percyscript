@@ -6,7 +6,9 @@ PercyScript.run(async (page, percySnapshot) => {
     await percySnapshot(name, { widths: [768, 992, 1200] });
   };
 
-  await page.goto("http://localhost:8000");
+  await page.goto("http://todomvc.com/examples/react/#/");
+
+  await page.waitFor(5000);
   await takeShots("TodoMVC home page");
 
   // Enter a new to-do.
