@@ -1,11 +1,11 @@
 const PercyScript = require("@percy/script");
 
-const takeShots = async (name) => {
-  await percySnapshot("", { widths: [768, 992, 1200] });
-};
-
 // A script to navigate our app and take snapshots with Percy.
 PercyScript.run(async (page, percySnapshot) => {
+  const takeShots = async (name) => {
+    await percySnapshot(name, { widths: [768, 992, 1200] });
+  };
+
   await page.goto("http://localhost:8000");
   await takeShots("TodoMVC home page");
 

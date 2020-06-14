@@ -8,9 +8,11 @@ jobs:
         uses: actions/checkout@master
       - name: Install
         run: yarn
+      - name: Start
+        run: "yarn presnapshots"
       - name: Percy Test
         uses: percy/exec-action@v0.1.1
         with:
-          command: "cypress run"
+          command: "yarn snapshots"
         env:
           PERCY_TOKEN: a563b7b7da58c3dc58e124e81cf5e8ac484db9ef4397d004053bbc6d776f2a40
